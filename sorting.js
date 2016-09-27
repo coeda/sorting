@@ -94,7 +94,7 @@ for(let length = 0; length <= (arr.length); length++)
     rightArray.shift();
   } else if(rightArray.length === 0 && leftArray.length === 0){
     console.log(newArr);
-    return newArr;
+    return;
   } else if(leftArray.length === 0){
     newArr.push(rightArray[0]);
     rightArray.shift();
