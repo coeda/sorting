@@ -111,18 +111,18 @@ function merge (left, right){
 
 
 let insertionSort = function(arr){
-    for(let insert = 0; insert < arr.length; i++){
-      let currentCompared = arr[i];
-      if(arr[i+1] < currentCompared){
-        while (arr[i+1] < currentCompared){
-          i--
+    for(let insert = 1; insert < arr.length; insert++){
+      let savedPlace = insert;
+      let currentCompared = arr[insert];
+      if(arr[savedPlace - 1] > currentCompared){
+        while (arr[savedPlace - 1] > currentCompared){
+          arr[savedPlace] = arr[savedPlace-1];
+          savedPlace--;
         }
-        arr[i] = arr[i+1];
-        arr[i+1] = currentCompared;
-      } else{
-        currentCompared = arr[i];
+        arr[savedPlace] = currentCompared;
       }
+      console.log(arr);
     }
 };
 
-
+insertionSort(randomArray);
