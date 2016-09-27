@@ -74,7 +74,7 @@ let mergeSort = function(arr){
   let rightArray = [];
   let newArr = [];
   if(arr.length === 1){
-    return arr[0];
+    return arr;
   }
   for(let l = 0; l < halfArr; l++){
     leftArray.push(arr[l]);
@@ -83,28 +83,30 @@ let mergeSort = function(arr){
     rightArray.push(arr[r]);
   }
 
-mergeSort(leftArray);
-mergeSort(rightArray);
-for(let length = 0; length <= (arr.length); length++)
-  if(leftArray[0] < rightArray[0]){
-    newArr.push(leftArray[0]);
-    leftArray.shift();
-  } else if(rightArray[0] < leftArray[0]){
-    newArr.push(rightArray[0]);
-    rightArray.shift();
-  } else if(rightArray.length === 0 && leftArray.length === 0){
-    console.log(newArr);
-    return;
-  } else if(leftArray.length === 0){
-    newArr.push(rightArray[0]);
-    rightArray.shift();
-  } else if(rightArray.length === 0){
-    newArr.push(leftArray[0]);
-    leftArray.shift();
-  }
-console.log(newArr);
-return newArr;
+return merge(mergeSort(leftArray), mergeSort(rightArray));
 };
+
+function merge (left, right){
+  let result = [];
+
+  while(left.length > 0 || right.length > 0){
+    if(left[0] < right[0]){
+      result.push(left[0]);
+      left.shift();
+    } else if(right[0] < left[0]){
+      result.push(right[0]);
+      right.shift();
+    } else if(left.length === 0){
+      result.push(right[0]);
+      right.shift();
+    } else if(right.length === 0){
+      result.push(left[0]);
+      left.shift();
+    }
+  }
+  console.log(result);
+  return result;
+}
 
 mergeSort(randomArray);
 
