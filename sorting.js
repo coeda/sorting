@@ -1,4 +1,4 @@
-let randomArray = [4,2,3,1];
+let randomArray = [4,2,3,1,5,8,7,9,10,6];
 
 let bubbleSort = function(array){
   let comparedNumber;
@@ -73,13 +73,13 @@ let mergeSort = function(arr){
   let leftArray = [];
   let rightArray = [];
   let newArr = [];
-  if(arr.length === 1){
+  if(arr.length <= 1){
     return arr;
   }
-  for(let l = 0; l < halfArr; l++){
+  for(let l = 0; l < Math.ceil(halfArr); l++){
     leftArray.push(arr[l]);
   }
-  for(let r = halfArr; r < arr.length; r++){
+  for(let r = Math.ceil(halfArr); r < arr.length; r++){
     rightArray.push(arr[r]);
   }
 
@@ -108,7 +108,7 @@ function merge (left, right){
   return result;
 }
 
-mergeSort(randomArray);
+
 
 let insertionSort = function(arr){
     for(let insert = 0; insert < arr.length; i++){
